@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+         }
+        .kolecko{
+            height: 100px;
+            aspect-ratio: 1/1;
+            border: 2px solid black;
+            border-radius: 50%;
+            background-color: rgb(208, 120, 255);
+            animation: ukazka 3s infinite forwards alternate;
+        }
+        .kolecko2{
+            height: 100px;
+            aspect-ratio: 1/1;
+            border: 2px solid black;
+            border-radius: 50%;
+            background-color: rgb(153, 0, 255);
+            animation: ukazka2 3s infinite forwards alternate ;
+            position: absolute;
+            top: 25%;
+            
+        }
+        .ctverec{
+            height: 100px;
+            aspect-ratio: 1/1;
+            background-color: rgb(105, 105, 238);
+            transition: background-color 2s, height 4s ease 0.1s;
+            position: absolute;
+            left: 70%;
+        }
+        .ctverec:hover {
+            background-color: rgb(152, 102, 199);
+            height: 500px;
+        }
+        .button{
+            height: 50px;
+            width: 100px;
+            border-radius: 15px;
+            position: absolute;
+            top: 62%;
+            cursor: pointer;
+            border: none;
+            color: white;
+            background: purple;  
+        }
+        .button:hover{
+            background-color: white;
+            scale: 1.1;
+        }
+        .button:link{
+            color: white;
+        }
+        .button:visited{
+            color: plum;
+        }
+        .button:active{
+            color: purple;
+        }
+        .ball{
+            height: 100px;
+            aspect-ratio: 1/1;
+            border-radius: 50%;
+            background-color: aqua;
+            position: absolute;
+            animation: hop 1.2s infinite alternate;
+        }
+        @keyframes ukazka2{
+            0%{
+                background-color: blue;
+            }
+            50%{
+            background-color: blueviolet;
+            border-radius: 0%;
+            }
+            100%{
+                background-color: rgb(255, 0, 208);
+                translate: 300px 0
+
+            }
+            
+        }
+        @keyframes ukazka {
+            0% {
+                background-color: rgb(136, 146, 255);
+                translate: 400px 0px;
+            }
+            50%{
+                background-color: rgb(191, 123, 255); 
+                border-radius: 0%;
+            }
+            100% {
+                background-color: rgb(243, 135, 255);
+                translate: 300px 0;
+               translate: 400px 500px;
+            }
+        }
+        @keyframes hop{
+            100%{
+                translate: 0 500px;
+                border-radius: 0%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="kolecko"></div>
+    <div class="kolecko2"></div>
+    <div class="ctverec"></div>
+    <div class="wrapper"></div>
+    <button class="button"  >zmáčkni mě a uvidíš co se bude dít</button>
+
+    <script>
+         let button = document.querySelector(".button")
+         let wrapper = document.querySelector(".wrapper")
+
+         button.addEventListener("click", function () {
+            for (let i = 0; i < 2; i++){
+
+                let ball = document.createElement("div")
+                ball.classList.add("ball")
+                wrapper.append(ball)
+
+                let randomNumber = Math.floor(Math.random() * 2000)
+                ball.style.left = `${randomNumber}px`
+
+                let randomColor = Math.floor(Math.random() * 16777215).toString(16)
+                ball.style.backgroundColor = "#" + randomColor
+            }
+         })
+    </script>
+    
+</body>
+</html>
